@@ -1,3 +1,4 @@
+import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChecklistComponent implements OnInit {
 
-  constructor() { }
+  checklist: []
+  constructor(private service:SharedService) { }
 
   ngOnInit(): void {
+    this.service.getChecklist().subscribe(
+      res => {console.log(res.data)
+      ,       this.checklist = res.data}
+    )
   }
+
+  getDelete(id) {
+    this.service.deleteChecklist(id).subscribe(
+      res => console.log(res)
+    )
+    alert("checklist dengan id " + id + " berhasil dihapus")
+  }
+
 
 }
