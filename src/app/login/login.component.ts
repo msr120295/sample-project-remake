@@ -18,17 +18,14 @@ export class LoginComponent implements OnInit {
 
   loginProcess() {
     var val = {
-      "email": this.email,
+      "username": this.email,
       "password": this.password}
 
-      this.service.login(val).subscribe(res=>{
-        if (res.hasOwnProperty("token") == true) {
-          console.log("login berhasil dengan value token " +  res["token"])
-        } else {
-          alert('password yang anda masukkan salah')
-        }
-
-      })
+      this.service.login(val).subscribe
+      (
+        res => console.log(res),
+        err  => console.log(err)
+      )
 
   }
 

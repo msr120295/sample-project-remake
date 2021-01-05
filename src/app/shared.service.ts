@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  readonly APIUrl = "https://reqres.in/api"
+  readonly APIUrl = "http://18.139.50.74:8080"
 
   constructor(private http:HttpClient) { }
 
   login(val:any) {
-    return this.http.post(this.APIUrl+'/login', val)
+    return this.http.post<any>(this.APIUrl+'/login', val)
   }
+
 
 }
