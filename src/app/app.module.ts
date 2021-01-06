@@ -10,13 +10,15 @@ import { ChecklistComponent } from './checklist/checklist.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { ListItemComponent } from './list-item/list-item.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ChecklistComponent,
-    LoginComponent
+    LoginComponent,
+    ListItemComponent
   ],
   imports: [
     BrowserModule,

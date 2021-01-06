@@ -34,8 +34,26 @@ export class SharedService {
     return this.http.get<any>(this.APIUrl + '/checklist')
   }
 
+  createChecklist(val:any) {
+    return this.http.post<any>(this.APIUrl+'/checklist', val)
+  }
+
   deleteChecklist(id) {
     return this.http.delete<any>(this.APIUrl + '/checklist/' + id)
+  }
+
+  ////////////////////////////////////////////////
+  ////list item///////////////////////////////////
+  getlistItem(id) {
+    return this.http.get<any>(this.APIUrl + '/item/' +  id)
+  }
+
+  createlistItem(val:any) {
+    return this.http.post<any>(this.APIUrl+'/item', val)
+  }
+
+  deletelistItem(id) {
+    return this.http.delete<any>(this.APIUrl + '/item/' + id)
   }
 
 

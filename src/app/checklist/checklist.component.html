@@ -1,20 +1,68 @@
 <div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">List</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of checklist;">
-        <td>{{data.id}}</td>
-        <td>{{data.name}}</td>
-        <td>
-          <button type="button" (click)="getDelete(data.id)" class="btn btn-danger">Delete</button>
-        </td>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary m-2"
+  data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" data-keybaord="false">
+  Create
+</button>
+
+<!-- Proses Create -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--proses create-->
+        <div>
+          <form>
+            <div class="mb-3">
+              <label class="form-label">New Checklist</label>
+              <input type="text" class="form-control" name="newData" [(ngModel)]="newData">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="addChecklist()" *ngIf="idActivatedComp == 0">Submit</button>
+            <button type="submit" class="btn btn-primary" (click)="addChecklist()" *ngIf="idActivatedComp == 0">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>checklist</th>
+      <th>checklist item</th>
+      <th>Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of checklist;">
+      <td>{{data.id}}</td>
+      <td>{{data.name}}</td>
+
+      <table class="table table-bordered">
+        <tr *ngFor="let item of data.items">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>
+            <input type="checkbox" name="" id="" class="mx-4">
+            <button type="button" (click)="deleteChecklistItem(item.id)" class="btn-sm">Delete Item</button>
+          </td>
+        </tr>
+      </table>
+
+
+      <td>
+        <button type="button" (click)="createChecklistItem(data.id)" class="btn-sm btn-primary">create Item</button>
+        <button type="button" (click)="getDelete(data.id)" class="btn-sm btn-danger mr-1 px-3 mx-3">Del Checklist</button>
+      </td>
     </tr>
   </tbody>
-  </table>
+</table>
 </div>
