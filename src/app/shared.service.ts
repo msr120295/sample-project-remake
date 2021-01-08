@@ -56,5 +56,12 @@ export class SharedService {
     return this.http.delete<any>(this.APIUrl + '/item/' + id)
   }
 
+  updatelistItem(id, val) {
+    return this.http.put(this.APIUrl + '/item/rename/' + id, val)
+  }
+
+  updateStatuslistItem(id, val) {
+    return this.http.put(this.APIUrl + '/item/' + id, val)
+  }
 
 }
